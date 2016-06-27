@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="format-detection" content="telephone=no">
+<style type="text/css">
+.color-red{ font-size:12px; color:red; font-weight:bold; }
+select{ font-size:12px; color:green; }
+.move_left{ width:200px; }
+</style>
+</head>
+<body>
+<table>
+	<tr>
+		<th><p class="color-red">可选择排序方式</p></th>
+		<th></th>
+		<th><p class="color-red">已选择排序方式</p></th>
+	</tr>
+	<tr>
+		<td width="40%">
+			<select multiple name="left" size="8" class="move_left" id="iLeft" >
+				<option value="20">测试数据一</option>
+				<option value="30">测试数据二</option>
+				<option value="40">测试数据三</option>
+				<option value="50">测试数据四</option>
+				<option value="60">测试数据五</option>
+				<option value="70">测试数据六</option>
+				<option value="80">测试数据七</option>
+				<option value="90">测试数据八</option>
+			</select>
+		</td>
+		<td width="20%" align="center">
+			<input type="button" value=">>" id="mLeft" onclick="moveFn(document.getElementById('iLeft'), document.getElementById('iRight'))" /><br /><br />
+			<input type="button" value="<<" id="mRight" onclick="moveFn(document.getElementById('iRight'), document.getElementById('iLeft'))" />
+		</td>
+		<td width="40%">
+			<select multiple name="right" size="8" class="move_left" id="iRight"></select>
+		</td>
+	</tr>
+
+</table>
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript">
+var iLeft  = $('#iLeft'),
+	iRight = $('#iRight');	
+
+var moveFn = function(il,ir){
+	for(var i=il.options.length-1; i>=0; i--){
+		if(il.options[i].selected){
+			var opt = new Option(il.options[i].text, il.options[i].value);
+			opt.selected = true;
+			ir.options.add(opt);
+			il.remove(i);
+		}
+	}
+}
+</script> 
+</body>
+</html>
+ 
